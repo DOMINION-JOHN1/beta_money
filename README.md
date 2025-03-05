@@ -83,7 +83,6 @@ The system is designed with the following components:
    ```ini
    GOOGLE_API_KEY=your_google_api_key
    PINECONE_API_KEY=your_pinecone_api_key
-   PINECONE_ENV=your_pinecone_environment
    ```
 
 ## Configuration
@@ -232,7 +231,5 @@ financial-advisor-rag/
 
 For any issues or feature requests, please create an issue in this repository or contact the maintainer.
 ```
-
----
 
 This `README.md` covers the purpose, installation, configuration, and detailed usage instructions, including descriptions of each function and how they integrate in a real-world workflow.
