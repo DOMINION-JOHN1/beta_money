@@ -15,7 +15,7 @@ This project implements a Retrieval-Augmented Generation (RAG) system for financ
   - [Example Workflow](#example-workflow)
 - [Scheduled Deletion of Data](#scheduled-deletion-of-data)
 - [Project Structure](#project-structure)
-- [License](#license)
+
 
 ## Overview
 
@@ -61,8 +61,8 @@ The system is designed with the following components:
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/financial-advisor-rag.git
-   cd financial-advisor-rag
+   git clone https://github.com/DOMINION-JOHN1/beta_money.git
+   cd beta_money
    ```
 
 
@@ -217,19 +217,16 @@ financial-advisor-rag/
 ├── .env                  # Environment variables file
 ├── README.md             # Project documentation (this file)
 ├── requirements.txt      # Required Python packages
-├── main.py               # Main script for running the RAG system
-├── delete_data.py        # Script for scheduled deletion of data from Pinecone
+├── main.py               # Main script for running the RAG system (this is yet to be added)
+├── clear_database.py        # Script for scheduled deletion of data from Pinecone
 ├── modules/
-│   ├── rag_system.py     # Contains the RAGSystem class and related functions
-│   └── data_ingestion.py # Contains the function to add webscraped data (with splitting) to Pinecone
+│   ├── ai_app.py     # Contains the RAGSystem class and related functions
+│   └── add_data.py # Contains the function to add webscraped data (with splitting) to Pinecone
 └── .github/
     └── workflows/
-        └── delete_cronjob.yaml  # GitHub Actions workflow for scheduled deletion
+        └── scheduler.yaml  # GitHub Actions workflow for scheduled deletion
 ```
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
