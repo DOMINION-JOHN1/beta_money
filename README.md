@@ -1,6 +1,4 @@
 
-
-```markdown
 # Financial Advisor RAG System with Multimedia Interaction
 
 This project implements a Retrieval-Augmented Generation (RAG) system for financial advice focused on stocks such as NVIDIA (NVDA), Tesla (TSLA), and Alphabet (GOOG). The system processes web-scraped financial news and discussions, splits the content into manageable chunks, and stores them as embeddings in a Pinecone vector store. It leverages Gemini models (via LangChain integrations) for both text embeddings and LLM-based reasoning, and integrates Whisper for speech-to-text conversion. Additionally, the system offers text-to-speech (TTS) and video generation to create multimedia outputs.
@@ -66,6 +64,7 @@ The system is designed with the following components:
    git clone https://github.com/yourusername/financial-advisor-rag.git
    cd financial-advisor-rag
    ```
+
 
 2. **Install Dependencies:**
 
