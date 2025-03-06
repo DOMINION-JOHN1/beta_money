@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from src.ai_app import RAGSystem
+from src.RAG.ai_app import RAGSystem
 
 
 app = FastAPI()
