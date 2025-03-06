@@ -22,13 +22,14 @@ index_name = "beta"
 pinecone_vectorStore = PineconeVectorStore(index_name=index_name, embedding=embedding_model)
 
 # Load the Whisper model for speech-to-text conversion
-whisper_model = whisper.load_model("base")
+# TODO: Reactivate when properly understood
+# whisper_model = whisper.load_model("base")
 
 class RAGSystem:
     def __init__(self):
         self.vector_store = pinecone_vectorStore
         self.llm = llm
-        self.whisper_model = whisper_model
+        # self.whisper_model = whisper_model
 
     def retrieve_documents(self, query, top_k=5):
         # Use the vector store's similarity search to retrieve relevant documents
