@@ -1,4 +1,3 @@
-
 # Financial Advisor RAG System with Multimedia Interaction
 
 This project implements a Retrieval-Augmented Generation (RAG) system for financial advice focused on stocks such as NVIDIA (NVDA), Tesla (TSLA), and Alphabet (GOOG). The system processes web-scraped financial news and discussions, splits the content into manageable chunks, and stores them as embeddings in a Pinecone vector store. It leverages Gemini models (via LangChain integrations) for both text embeddings and LLM-based reasoning, and integrates Whisper for speech-to-text conversion. Additionally, the system offers text-to-speech (TTS) and video generation to create multimedia outputs.
@@ -15,7 +14,6 @@ This project implements a Retrieval-Augmented Generation (RAG) system for financ
   - [Example Workflow](#example-workflow)
 - [Scheduled Deletion of Data](#scheduled-deletion-of-data)
 - [Project Structure](#project-structure)
-
 
 ## Overview
 
@@ -65,7 +63,6 @@ The system is designed with the following components:
    cd beta_money
    ```
 
-
 2. **Install Dependencies:**
 
    Ensure you have Python 3.8+ installed. Then run:
@@ -85,10 +82,23 @@ The system is designed with the following components:
    PINECONE_API_KEY=your_pinecone_api_key
    ```
 
+4. **Start App Api:**
+
+   ```bash
+    fastapi dev src
+   ```
+
+   This runs a simple api for the system, with endpoints:
+
+   - `/chat/text` for text queries
+   - `/chat/audio` for audio queries
+   - `/chat/video` for video queries
+
 ## Configuration
 
 - **Embedding Model & LLM:**  
   The project uses Gemini models via the LangChain integrations:
+
   - **Embedding:** `GoogleGenerativeAIEmbeddings` with model `"models/embedding-001"`.
   - **LLM:** `GoogleGenerativeAI` with model `"gemini-1.5-flash"`.
 
@@ -103,6 +113,7 @@ The system is designed with the following components:
 ### Data Ingestion & Vectorization
 
 To ingest and store web-scraped data, use the function `add_webscraped_data_to_pinecone`. This function:
+
 - Registers/creates the Pinecone index ("beta").
 - Splits each document into smaller chunks.
 - Converts the chunks into embeddings and adds them to the vector store.
@@ -136,22 +147,24 @@ The `RAGSystem` class encapsulates the following functions:
   Returns: A list of relevant documents from the vector store.
 
 - **`generate_response(query, retrieved_docs)`**  
-  Expects:  
-  - `query`: The user's query in text.  
+  Expects:
+
+  - `query`: The user's query in text.
   - `retrieved_docs`: The documents retrieved from the vector store.  
-  The function constructs a prompt (instructing the LLM to infer the user's risk appetite and provide detailed financial advice) and returns the generated response text.
+    The function constructs a prompt (instructing the LLM to infer the user's risk appetite and provide detailed financial advice) and returns the generated response text.
 
 - **`text_to_speech(text, filename="response.mp3")`**  
-  Expects:  
-  - `text`: The generated response text.  
+  Expects:
+
+  - `text`: The generated response text.
   - `filename`: Optional output file name.  
-  Returns: The path to the saved audio file.
+    Returns: The path to the saved audio file.
 
 - **`generate_video(text, output_filename="response_video.mp4")`**  
-  Expects:  
-  - `text`: The generated response text.  
+  Expects:
+  - `text`: The generated response text.
   - `output_filename`: Optional video output file name.  
-  Returns: The path to the saved video file with text overlay.
+    Returns: The path to the saved video file with text overlay.
 
 ### Example Workflow
 
@@ -226,10 +239,11 @@ financial-advisor-rag/
         └── scheduler.yaml  # GitHub Actions workflow for scheduled deletion
 ```
 
-
 ---
 
 For any issues or feature requests, please create an issue in this repository or contact the maintainer.
+
 ```
 
 This `README.md` covers the purpose, installation, configuration, and detailed usage instructions, including descriptions of each function and how they integrate in a real-world workflow.
+```
