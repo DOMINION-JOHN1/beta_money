@@ -6,7 +6,7 @@ import whisper
 from langchain_google_genai import GoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain_pinecone import PineconeVectorStore
 from gtts import gTTS
-import moviepy.editor as mpy
+# import moviepy.editor as mpy
 
 # Load environment variables 
 load_dotenv()
@@ -25,14 +25,14 @@ pinecone_vectorStore = PineconeVectorStore(index_name=index_name, embedding=embe
 whisper_model = whisper.load_model("base")
 
 class RAGSystem:
-    def __init__(self, pinecone_vectorStore, llm, whisper_model):
+    def __init__(self):
         self.vector_store = pinecone_vectorStore
         self.llm = llm
         self.whisper_model = whisper_model
 
     def retrieve_documents(self, query, top_k=5):
         # Use the vector store's similarity search to retrieve relevant documents
-        return self.vector_store.similarity_search(query, top_k=top_k)
+        return self.vector_store.similarity_search(query, k=top_k)
     
     def generate_response(self, query, retrieved_docs):
         """
@@ -64,12 +64,12 @@ class RAGSystem:
         tts.save(filename)
         return filename
 
-    def generate_video(self, text, output_filename="response_video.mp4"):
-        # Create a simple video with text overlay using MoviePy
-        clip = mpy.ColorClip(size=(640, 480), color=(255, 255, 255), duration=10)
-        txt_clip = mpy.TextClip(text, fontsize=24, color='black', method='caption', size=(600, 400))
-        txt_clip = txt_clip.set_position('center').set_duration(10)
-        video = mpy.CompositeVideoClip([clip, txt_clip])
-        video.write_videofile(output_filename, fps=24)
-        return output_filename
+    # def generate_video(self, text, output_filename="response_video.mp4"):
+    #     # Create a simple video with text overlay using MoviePy
+    #     clip = mpy.ColorClip(size=(640, 480), color=(255, 255, 255), duration=10)
+    #     txt_clip = mpy.TextClip(text, fontsize=24, color='black', method='caption', size=(600, 400))
+    #     txt_clip = txt_clip.set_position('center').set_duration(10)
+    #     video = mpy.CompositeVideoClip([clip, txt_clip])
+    #     video.write_videofile(output_filename, fps=24)
+    #     return output_filename
 
