@@ -29,7 +29,7 @@ def get_embedding_dimension():
     return embedding_dimension
 
 
-def add_webscraped_data_to_pinecone(webscraped_data, embedding_model):
+def add_webscraped_data_to_pinecone(webscraped_data):
     """
     Splits the web-scraped data into smaller chunks, vectorizes them, and adds them to the Pinecone index.
 
@@ -62,9 +62,7 @@ def add_webscraped_data_to_pinecone(webscraped_data, embedding_model):
         )
 
     # Create the vector store using the Pinecone index and embedding function.
-    vector_store = PineconeVectorStore(
-        index_name=index_name, embedding_function=embedding_model.embed_text
-    )
+    vector_store = PineconeVectorStore(index_name=index_name, embedding=embedding_model)
 
     # Split each document into chunks.
     splitted_documents = []
@@ -85,4 +83,4 @@ def add_webscraped_data_to_pinecone(webscraped_data, embedding_model):
 
 
 if __name__ == "__main__":
-    add_webscraped_data_to_pinecone(webscraped_data, embedding_model)
+    add_webscraped_data_to_pinecone(webscraped_data)
