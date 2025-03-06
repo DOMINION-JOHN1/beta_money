@@ -25,10 +25,10 @@ async def text_chat(user_query: UserQuery) -> dict:
 
 
 @app.get("/chat/audio")
-async def audio_chat() -> dict:
+async def audio_chat():
     pass
 
 
 @app.get("/chat/video")
-async def video_chat() -> dict:
+async def video_chat():
     pass
